@@ -1,0 +1,12 @@
+# Cargo config for Wisper — forces the x86_64 GNU target to use
+# the correct 64-bit MSYS2/MinGW64 toolchain instead of the 32-bit
+# MinGW at C:\MinGW which ships a windres that can't target x86_64.
+[target.x86_64-pc-windows-gnu]
+linker = "C:\\msys64\\mingw64\\bin\\gcc.exe"
+ar = "C:\\msys64\\mingw64\\bin\\ar.exe"
+
+[env]
+# Point tauri-winres to the 64-bit windres from MSYS2/MinGW64.
+# Without this, it picks up C:\MinGW\bin\windres.exe (32-bit) which
+# fails with "Can't detect target endianness and architecture".
+WINDRES = "C:\\msys64\\mingw64\\bin\\windres.exe"
