@@ -1,0 +1,119 @@
+/* ===== Wisper Overlay ===== */
+
+html, body, #root {
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.overlay-root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.overlay-root.transparent {
+  pointer-events: none;
+}
+
+/* ===== Pill ===== */
+
+.overlay-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease-out;
+  white-space: nowrap;
+}
+
+.recording .overlay-pill {
+  background: rgba(220, 38, 38, 0.85);
+  border: 1px solid rgba(255, 100, 100, 0.4);
+}
+
+.processing .overlay-pill {
+  background: rgba(30, 30, 50, 0.88);
+  border: 1px solid rgba(108, 99, 255, 0.4);
+}
+
+.done .overlay-pill {
+  background: rgba(16, 80, 50, 0.88);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  animation: fadeIn 0.15s ease-out;
+}
+
+.error .overlay-pill {
+  background: rgba(80, 20, 20, 0.88);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+.overlay-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+/* ===== Pulse Dot (Recording) ===== */
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  animation: pulse 1s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ===== Spinner (Processing) ===== */
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Check / Error Icons ===== */
+
+.check-icon {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4ade80;
+}
+
+.error-icon {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f87171;
+}
+
+/* ===== Animations ===== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
